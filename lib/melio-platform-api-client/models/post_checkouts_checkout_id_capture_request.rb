@@ -19,11 +19,15 @@ module MelioPlatformApiClient
 
     attr_accessor :invoice
 
+    # Optional. Final amount in order's currency to actually charge for this order. Cannot be more than the original checkout's outstanding balance.
+    attr_accessor :amount
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'merchant_order_reference' => :'merchantOrderReference',
-        :'invoice' => :'invoice'
+        :'invoice' => :'invoice',
+        :'amount' => :'amount'
       }
     end
 
@@ -36,7 +40,8 @@ module MelioPlatformApiClient
     def self.openapi_types
       {
         :'merchant_order_reference' => :'String',
-        :'invoice' => :'PostCheckoutsCheckoutIdCaptureRequestInvoice'
+        :'invoice' => :'PostCheckoutsCheckoutIdCaptureRequestInvoice',
+        :'amount' => :'Integer'
       }
     end
 
@@ -68,6 +73,10 @@ module MelioPlatformApiClient
       if attributes.key?(:'invoice')
         self.invoice = attributes[:'invoice']
       end
+
+      if attributes.key?(:'amount')
+        self.amount = attributes[:'amount']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -82,6 +91,14 @@ module MelioPlatformApiClient
         invalid_properties.push('invalid value for "invoice", invoice cannot be nil.')
       end
 
+      if !@amount.nil? && @amount > 99999999
+        invalid_properties.push('invalid value for "amount", must be smaller than or equal to 99999999.')
+      end
+
+      if !@amount.nil? && @amount < 1
+        invalid_properties.push('invalid value for "amount", must be greater than or equal to 1.')
+      end
+
       invalid_properties
     end
 
@@ -90,7 +107,23 @@ module MelioPlatformApiClient
     def valid?
       return false if @merchant_order_reference.nil?
       return false if @invoice.nil?
+      return false if !@amount.nil? && @amount > 99999999
+      return false if !@amount.nil? && @amount < 1
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] amount Value to be assigned
+    def amount=(amount)
+      if !amount.nil? && amount > 99999999
+        fail ArgumentError, 'invalid value for "amount", must be smaller than or equal to 99999999.'
+      end
+
+      if !amount.nil? && amount < 1
+        fail ArgumentError, 'invalid value for "amount", must be greater than or equal to 1.'
+      end
+
+      @amount = amount
     end
 
     # Checks equality by comparing each attribute.
@@ -99,7 +132,8 @@ module MelioPlatformApiClient
       return true if self.equal?(o)
       self.class == o.class &&
           merchant_order_reference == o.merchant_order_reference &&
-          invoice == o.invoice
+          invoice == o.invoice &&
+          amount == o.amount
     end
 
     # @see the `==` method
@@ -111,7 +145,7 @@ module MelioPlatformApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [merchant_order_reference, invoice].hash
+      [merchant_order_reference, invoice, amount].hash
     end
 
     # Builds the object from hash

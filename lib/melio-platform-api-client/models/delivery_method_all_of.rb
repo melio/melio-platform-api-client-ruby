@@ -36,14 +36,13 @@ module MelioPlatformApiClient
     def self.openapi_types
       {
         :'type' => :'DeliveryMethodType',
-        :'details' => :'OneOfBankAccountVirtualAccountPaperCheckBillerAccountDomesticWireAccount'
+        :'details' => :'DeliveryMethodDetails'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'details'
       ])
     end
 
@@ -79,6 +78,10 @@ module MelioPlatformApiClient
         invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
+      if @details.nil?
+        invalid_properties.push('invalid value for "details", details cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -86,6 +89,7 @@ module MelioPlatformApiClient
     # @return true if the model is valid
     def valid?
       return false if @type.nil?
+      return false if @details.nil?
       true
     end
 

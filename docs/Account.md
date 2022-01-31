@@ -8,6 +8,7 @@
 | **history** | [**ShortHistory**](ShortHistory.md) |  |  |
 | **company** | [**Company**](Company.md) |  |  |
 | **user** | [**Person**](Person.md) |  |  |
+| **status** | **String** | Holds the eligibility of the account to make payments |  |
 
 ## Example
 
@@ -18,7 +19,8 @@ instance = MelioPlatformApiClient::Account.new(
   id: null,
   history: null,
   company: null,
-  user: null
+  user: null,
+  status: pending
 )
 ```
 

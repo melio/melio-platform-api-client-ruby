@@ -193,7 +193,7 @@ api_instance = MelioPlatformApiClient::FinancingApi.new
 idempotency_key = 'idempotency_key_example' # String | Unique idempotency key
 opts = {
   melio_account: 'melio_account_example', # String | The `Melio-Account` header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account's ID which returned when creating the Account, or when retrieving all of the Partner's Accounts. Note that most operations are not permitted without the presence of this header.
-  post_financing_transactional_request: MelioPlatformApiClient::PostFinancingTransactionalRequest.new # PostFinancingTransactionalRequest | 
+  post_financing_transactional_request: MelioPlatformApiClient::PostFinancingTransactionalRequest.new({amount: 150000, payee_account_id: 'payee_account_id_example'}) # PostFinancingTransactionalRequest | 
 }
 
 begin

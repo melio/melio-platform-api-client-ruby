@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **type** | [**DeliveryMethodType**](DeliveryMethodType.md) |  |  |
-| **details** | [**OneOfBankAccountVirtualAccountPaperCheckBillerAccountDomesticWireAccount**](OneOfBankAccountVirtualAccountPaperCheckBillerAccountDomesticWireAccount.md) |  |  |
+| **details** | [**DeliveryMethodDetails**](DeliveryMethodDetails.md) |  |  |
 
 ## Example
 

@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **amount** | **Integer** | USD amount for financing, in cents | [optional] |
-| **payee_account_id** | **String** |  | [optional] |
+| **amount** | **Integer** | USD amount for financing, in cents |  |
+| **payee_account_id** | **String** |  |  |
 
 ## Example
 

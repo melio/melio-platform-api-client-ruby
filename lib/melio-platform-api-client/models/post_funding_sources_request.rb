@@ -62,14 +62,13 @@ module MelioPlatformApiClient
       {
         :'display_name' => :'String',
         :'type' => :'String',
-        :'details' => :'OneOfBankAccountPlaidDetailsTabaPayDetails'
+        :'details' => :'PostFundingSourcesRequestDetails'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'details'
       ])
     end
 
@@ -109,6 +108,10 @@ module MelioPlatformApiClient
         invalid_properties.push('invalid value for "type", type cannot be nil.')
       end
 
+      if @details.nil?
+        invalid_properties.push('invalid value for "details", details cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -118,6 +121,7 @@ module MelioPlatformApiClient
       return false if @type.nil?
       type_validator = EnumAttributeValidator.new('String', ["plaid", "bank-account", "card"])
       return false unless type_validator.valid?(@type)
+      return false if @details.nil?
       true
     end
 

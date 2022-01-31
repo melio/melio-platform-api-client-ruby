@@ -3,7 +3,7 @@
 =begin
 #Platform API
 
-#Melio Platform API enables partners to perform partner-related operations in Melio's system, for themselves, and on behalf of their system's users.
+#Melio Platform API enables partners to perform partner-related operations in Melio's system, for themselves, and on behalf of their system's users.  ## Definitions & entities #### Partner Represents a party that has high-level access level and can manage Accounts and performing action on them. Partners authenticate using a Partner secret API key, and are permitted to perform only on Accounts that belong to them.  #### Account Represents a business / company that is connected to the Partners system. Partners can have multiple Accounts.  #### Delivery Method A payment destination that is used to receive funds. Accounts can have multiple Delivery Methods.  #### Funding Source A payment source that is used to send funds. Accounts can have multiple Funding Sources.  #### Vendor A business entity that can receive funds from an Account. Vendors are Account-specific.  #### Payment Intent This main entity holds the general bill information (e.g. amount to pay, Vendor to pay to, due date, etc.), and acts as a utility / factory for creating Payments with selected configuration.  #### Payment This core entity facilitates Melio's main use case of transferring funds *from* an Account's Delivery Method *to* a Vendor / Account's Delivery Method on a certain date, along with additional relevant information.  #### Merchant Represents an Account's configuration as a seller, along with its additional data and options.  #### Checkout Represents a checkout session that is performed by the buyer, along with the cart and additional required details.  #### Charge Represnets a charging order for a Checkout, created when a Checkout is captured.  #### FileInfo Wraps around a file in the platform - generic and can be uplaoded and associated with other objects per request.  ## `Melio-Account` header The `Melio-Account` header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account's ID which returned when creating the Account, or when retrieving all of the Partner's Accounts.  Note that most operations are not permitted without the presence of this header. 
 
 The version of the OpenAPI document: 1.0
 Contact: platform@melio.com
@@ -22,8 +22,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Melio"]
   s.email       = ["platform@melio.com"]
   s.homepage    = "https://docs.melio.com"
-  s.summary     = "Platform API Ruby Gem"
-  s.description = "Melio Platform API enables partners to perform partner-related operations in Melio&#39;s system"
+  s.summary     = "Melio Platform API Ruby Client Library"
+  s.description = "Melio Platform API Ruby Client Library"
   s.license     = "Unlicense"
   s.required_ruby_version = ">= 2.4"
 

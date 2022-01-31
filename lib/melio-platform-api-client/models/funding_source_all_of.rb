@@ -40,7 +40,7 @@ module MelioPlatformApiClient
       {
         :'display_name' => :'String',
         :'type' => :'FundingSourceType',
-        :'details' => :'OneOfBankAccountCard'
+        :'details' => :'FundingSourceDetails'
       }
     end
 

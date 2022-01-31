@@ -6,7 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **display_name** | **String** |  | [optional] |
 | **type** | **String** |  |  |
-| **details** | [**OneOfBankAccountPlaidDetailsTabaPayDetails**](OneOfBankAccountPlaidDetailsTabaPayDetails.md) |  |  |
+| **details** | [**PostFundingSourcesRequestDetails**](PostFundingSourcesRequestDetails.md) |  |  |
 
 ## Example
 

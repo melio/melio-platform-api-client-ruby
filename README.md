@@ -13,8 +13,10 @@ Refer to our [API Reference](https://docs.melio.com/docs/api-ref/YXBpOjM0ODE4MDA
 Add the following in the Gemfile:
 
 ```
-gem 'melio-platform-api-client', :git => 'https://github.com/melio/melio-platform-api-client-ruby.git', branch: 'main'
+gem 'melio-platform-api-client', :git => 'https://github.com/melio/melio-platform-api-client-ruby.git', :tag => 'v1.0.1'
 ```
+
+Change `:tag => 'v1.0.1` to the version you need.
 
 ### Setup
 
@@ -43,7 +45,7 @@ end
 ### Send an API request
 
 Once everything is configured properly, initialize one of the `*Api` modules in you application, and invoke one of the available functions.
-The functions in each module represent the API operations, as they appear in our [API Reference](https://docs.melio.com/docs/api-ref/YXBpOjM0ODE4MDA4-platform-api). 
+The functions in each module represent the API operations, as they appear in our [API Reference](https://docs.melio.com/docs/api-ref/YXBpOjM0ODE4MDA4-platform-api).
 
 ```ruby
 api_instance = MelioPlatformApiClient::AccountsApi.new
@@ -71,6 +73,7 @@ Class | Method | HTTP request | Description
 *MelioPlatformApiClient::ChargesApi* | [**delete_charges_charge_id**](docs/ChargesApi.md#delete_charges_charge_id) | **DELETE** /charges/{chargeId} | Delete a Charge
 *MelioPlatformApiClient::ChargesApi* | [**get_charges_charge_id**](docs/ChargesApi.md#get_charges_charge_id) | **GET** /charges/{chargeId} | Retrieve a Charge
 *MelioPlatformApiClient::ChargesApi* | [**get_merchants_merchant_id_charges**](docs/ChargesApi.md#get_merchants_merchant_id_charges) | **GET** /merchants/{merchantId}/charges | Retrieve all Charges
+*MelioPlatformApiClient::ChargesApi* | [**patch_charges_charge_id**](docs/ChargesApi.md#patch_charges_charge_id) | **PATCH** /charges/{chargeId} | Update a Charge
 *MelioPlatformApiClient::CheckoutsApi* | [**get_checkouts_checkout_id**](docs/CheckoutsApi.md#get_checkouts_checkout_id) | **GET** /checkouts/{checkoutId} | Retrieve a Checkout
 *MelioPlatformApiClient::CheckoutsApi* | [**post_checkouts**](docs/CheckoutsApi.md#post_checkouts) | **POST** /merchants/{merchantId}/checkouts | Create a Checkout
 *MelioPlatformApiClient::CheckoutsApi* | [**post_checkouts_checkout_id_capture**](docs/CheckoutsApi.md#post_checkouts_checkout_id_capture) | **POST** /checkouts/{checkoutId}/capture | Capture a Checkout

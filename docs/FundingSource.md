@@ -8,7 +8,7 @@
 | **history** | [**ShortHistory**](ShortHistory.md) |  |  |
 | **display_name** | **String** |  | [optional] |
 | **type** | [**FundingSourceType**](FundingSourceType.md) |  |  |
-| **details** | [**OneOfBankAccountCard**](OneOfBankAccountCard.md) |  |  |
+| **details** | [**FundingSourceDetails**](FundingSourceDetails.md) |  |  |
 
 ## Example
 

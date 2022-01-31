@@ -7,7 +7,7 @@
 | **id** | **String** | Identifier of the entity. |  |
 | **history** | [**ShortHistory**](ShortHistory.md) |  |  |
 | **type** | [**DeliveryMethodType**](DeliveryMethodType.md) |  |  |
-| **details** | [**OneOfBankAccountVirtualAccountPaperCheckBillerAccountDomesticWireAccount**](OneOfBankAccountVirtualAccountPaperCheckBillerAccountDomesticWireAccount.md) |  |  |
+| **details** | [**DeliveryMethodDetails**](DeliveryMethodDetails.md) |  |  |
 
 ## Example
 

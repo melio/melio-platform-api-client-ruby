@@ -24,6 +24,7 @@ module MelioPlatformApiClient
     # @param name [String] The name of the Vendor to query
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit The number of items to include in the returned list (default to 20)
+    # @option opts [String] :melio_account The &#x60;Melio-Account&#x60; header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account&#39;s ID which returned when creating the Account, or when retrieving all of the Partner&#39;s Accounts. Note that most operations are not permitted without the presence of this header.
     # @return [GetVendorDirectoryResponse]
     def get_vendor_directory(name, opts = {})
       data, _status_code, _headers = get_vendor_directory_with_http_info(name, opts)
@@ -35,6 +36,7 @@ module MelioPlatformApiClient
     # @param name [String] The name of the Vendor to query
     # @param [Hash] opts the optional parameters
     # @option opts [Integer] :limit The number of items to include in the returned list
+    # @option opts [String] :melio_account The &#x60;Melio-Account&#x60; header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account&#39;s ID which returned when creating the Account, or when retrieving all of the Partner&#39;s Accounts. Note that most operations are not permitted without the presence of this header.
     # @return [Array<(GetVendorDirectoryResponse, Integer, Hash)>] GetVendorDirectoryResponse data, response status code and response headers
     def get_vendor_directory_with_http_info(name, opts = {})
       if @api_client.config.debugging
@@ -60,6 +62,7 @@ module MelioPlatformApiClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      header_params[:'Melio-Account'] = opts[:'melio_account'] if !opts[:'melio_account'].nil?
 
       # form parameters
       form_params = opts[:form_params] || {}

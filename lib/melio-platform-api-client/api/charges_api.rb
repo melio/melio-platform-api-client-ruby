@@ -223,5 +223,85 @@ module MelioPlatformApiClient
       end
       return data, status_code, headers
     end
+
+    # Update a Charge
+    # Update a Charge (effectively a partial refund). Send a new amount to refund the difference between original charge's amount and the new one. The new amount cannot be more than the original.
+    # @param charge_id [String] 
+    # @param idempotency_key [String] Unique idempotency key
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :melio_account The &#x60;Melio-Account&#x60; header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account&#39;s ID which returned when creating the Account, or when retrieving all of the Partner&#39;s Accounts. Note that most operations are not permitted without the presence of this header.
+    # @option opts [PatchChargesChargeIdRequest] :patch_charges_charge_id_request 
+    # @return [PatchChargesChargeIdResponse]
+    def patch_charges_charge_id(charge_id, idempotency_key, opts = {})
+      data, _status_code, _headers = patch_charges_charge_id_with_http_info(charge_id, idempotency_key, opts)
+      data
+    end
+
+    # Update a Charge
+    # Update a Charge (effectively a partial refund). Send a new amount to refund the difference between original charge&#39;s amount and the new one. The new amount cannot be more than the original.
+    # @param charge_id [String] 
+    # @param idempotency_key [String] Unique idempotency key
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :melio_account The &#x60;Melio-Account&#x60; header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account&#39;s ID which returned when creating the Account, or when retrieving all of the Partner&#39;s Accounts. Note that most operations are not permitted without the presence of this header.
+    # @option opts [PatchChargesChargeIdRequest] :patch_charges_charge_id_request 
+    # @return [Array<(PatchChargesChargeIdResponse, Integer, Hash)>] PatchChargesChargeIdResponse data, response status code and response headers
+    def patch_charges_charge_id_with_http_info(charge_id, idempotency_key, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ChargesApi.patch_charges_charge_id ...'
+      end
+      # verify the required parameter 'charge_id' is set
+      if @api_client.config.client_side_validation && charge_id.nil?
+        fail ArgumentError, "Missing the required parameter 'charge_id' when calling ChargesApi.patch_charges_charge_id"
+      end
+      # verify the required parameter 'idempotency_key' is set
+      if @api_client.config.client_side_validation && idempotency_key.nil?
+        fail ArgumentError, "Missing the required parameter 'idempotency_key' when calling ChargesApi.patch_charges_charge_id"
+      end
+      # resource path
+      local_var_path = '/charges/{chargeId}'.sub('{' + 'chargeId' + '}', CGI.escape(charge_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+      header_params[:'Idempotency-Key'] = idempotency_key
+      header_params[:'Melio-Account'] = opts[:'melio_account'] if !opts[:'melio_account'].nil?
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'patch_charges_charge_id_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'PatchChargesChargeIdResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['ApiKey']
+
+      new_options = opts.merge(
+        :operation => :"ChargesApi.patch_charges_charge_id",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ChargesApi#patch_charges_charge_id\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
   end
 end

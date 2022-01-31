@@ -5,7 +5,7 @@
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **type** | [**DeliveryMethodType**](DeliveryMethodType.md) |  |  |
-| **details** | [**OneOfBankAccountVirtualAccountPaperCheckDomesticWireAccount**](OneOfBankAccountVirtualAccountPaperCheckDomesticWireAccount.md) |  |  |
+| **details** | [**PostDeliveryMethodsRequestDetails**](PostDeliveryMethodsRequestDetails.md) |  |  |
 
 ## Example
 

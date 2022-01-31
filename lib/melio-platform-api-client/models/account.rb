@@ -25,13 +25,39 @@ module MelioPlatformApiClient
 
     attr_accessor :user
 
+    # Holds the eligibility of the account to make payments
+    attr_accessor :status
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'id' => :'id',
         :'history' => :'history',
         :'company' => :'company',
-        :'user' => :'user'
+        :'user' => :'user',
+        :'status' => :'status'
       }
     end
 
@@ -46,7 +72,8 @@ module MelioPlatformApiClient
         :'id' => :'String',
         :'history' => :'ShortHistory',
         :'company' => :'Company',
-        :'user' => :'Person'
+        :'user' => :'Person',
+        :'status' => :'String'
       }
     end
 
@@ -94,6 +121,10 @@ module MelioPlatformApiClient
       if attributes.key?(:'user')
         self.user = attributes[:'user']
       end
+
+      if attributes.key?(:'status')
+        self.status = attributes[:'status']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -116,6 +147,10 @@ module MelioPlatformApiClient
         invalid_properties.push('invalid value for "user", user cannot be nil.')
       end
 
+      if @status.nil?
+        invalid_properties.push('invalid value for "status", status cannot be nil.')
+      end
+
       invalid_properties
     end
 
@@ -126,7 +161,20 @@ module MelioPlatformApiClient
       return false if @history.nil?
       return false if @company.nil?
       return false if @user.nil?
+      return false if @status.nil?
+      status_validator = EnumAttributeValidator.new('String', ["pending", "approved", "declined", "suspended"])
+      return false unless status_validator.valid?(@status)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] status Object to be assigned
+    def status=(status)
+      validator = EnumAttributeValidator.new('String', ["pending", "approved", "declined", "suspended"])
+      unless validator.valid?(status)
+        fail ArgumentError, "invalid value for \"status\", must be one of #{validator.allowable_values}."
+      end
+      @status = status
     end
 
     # Checks equality by comparing each attribute.
@@ -137,7 +185,8 @@ module MelioPlatformApiClient
           id == o.id &&
           history == o.history &&
           company == o.company &&
-          user == o.user
+          user == o.user &&
+          status == o.status
     end
 
     # @see the `==` method
@@ -149,7 +198,7 @@ module MelioPlatformApiClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, history, company, user].hash
+      [id, history, company, user, status].hash
     end
 
     # Builds the object from hash

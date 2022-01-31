@@ -7,6 +7,7 @@ All URIs are relative to *https://api.melio.com/v1*
 | [**delete_charges_charge_id**](ChargesApi.md#delete_charges_charge_id) | **DELETE** /charges/{chargeId} | Delete a Charge |
 | [**get_charges_charge_id**](ChargesApi.md#get_charges_charge_id) | **GET** /charges/{chargeId} | Retrieve a Charge |
 | [**get_merchants_merchant_id_charges**](ChargesApi.md#get_merchants_merchant_id_charges) | **GET** /merchants/{merchantId}/charges | Retrieve all Charges |
+| [**patch_charges_charge_id**](ChargesApi.md#patch_charges_charge_id) | **PATCH** /charges/{chargeId} | Update a Charge |
 
 
 ## delete_charges_charge_id
@@ -233,5 +234,84 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## patch_charges_charge_id
+
+> <PatchChargesChargeIdResponse> patch_charges_charge_id(charge_id, idempotency_key, opts)
+
+Update a Charge
+
+Update a Charge (effectively a partial refund). Send a new amount to refund the difference between original charge's amount and the new one. The new amount cannot be more than the original.
+
+### Examples
+
+```ruby
+require 'time'
+require 'melio-platform-api-client'
+# setup authorization
+MelioPlatformApiClient.configure do |config|
+  # Configure API key authorization: ApiKey
+  config.api_key['ApiKey'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  # config.api_key_prefix['ApiKey'] = 'Bearer'
+end
+
+api_instance = MelioPlatformApiClient::ChargesApi.new
+charge_id = 'charge_id_example' # String | 
+idempotency_key = 'idempotency_key_example' # String | Unique idempotency key
+opts = {
+  melio_account: 'melio_account_example', # String | The `Melio-Account` header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account's ID which returned when creating the Account, or when retrieving all of the Partner's Accounts. Note that most operations are not permitted without the presence of this header.
+  patch_charges_charge_id_request: MelioPlatformApiClient::PatchChargesChargeIdRequest.new # PatchChargesChargeIdRequest | 
+}
+
+begin
+  # Update a Charge
+  result = api_instance.patch_charges_charge_id(charge_id, idempotency_key, opts)
+  p result
+rescue MelioPlatformApiClient::ApiError => e
+  puts "Error when calling ChargesApi->patch_charges_charge_id: #{e}"
+end
+```
+
+#### Using the patch_charges_charge_id_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<PatchChargesChargeIdResponse>, Integer, Hash)> patch_charges_charge_id_with_http_info(charge_id, idempotency_key, opts)
+
+```ruby
+begin
+  # Update a Charge
+  data, status_code, headers = api_instance.patch_charges_charge_id_with_http_info(charge_id, idempotency_key, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <PatchChargesChargeIdResponse>
+rescue MelioPlatformApiClient::ApiError => e
+  puts "Error when calling ChargesApi->patch_charges_charge_id_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **charge_id** | **String** |  |  |
+| **idempotency_key** | **String** | Unique idempotency key |  |
+| **melio_account** | **String** | The &#x60;Melio-Account&#x60; header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account&#39;s ID which returned when creating the Account, or when retrieving all of the Partner&#39;s Accounts. Note that most operations are not permitted without the presence of this header. | [optional] |
+| **patch_charges_charge_id_request** | [**PatchChargesChargeIdRequest**](PatchChargesChargeIdRequest.md) |  | [optional] |
+
+### Return type
+
+[**PatchChargesChargeIdResponse**](PatchChargesChargeIdResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

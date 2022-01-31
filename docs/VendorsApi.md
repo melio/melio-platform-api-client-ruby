@@ -123,7 +123,8 @@ end
 api_instance = MelioPlatformApiClient::VendorsApi.new
 name = 'name_example' # String | The name of the Vendor to query
 opts = {
-  limit: 56 # Integer | The number of items to include in the returned list
+  limit: 56, # Integer | The number of items to include in the returned list
+  melio_account: 'melio_account_example' # String | The `Melio-Account` header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account's ID which returned when creating the Account, or when retrieving all of the Partner's Accounts. Note that most operations are not permitted without the presence of this header.
 }
 
 begin
@@ -159,6 +160,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | The name of the Vendor to query |  |
 | **limit** | **Integer** | The number of items to include in the returned list | [optional][default to 20] |
+| **melio_account** | **String** | The &#x60;Melio-Account&#x60; header is used when a Partner wants to perform an operation on behalf of one of its Accounts. It contains the Account&#39;s ID which returned when creating the Account, or when retrieving all of the Partner&#39;s Accounts. Note that most operations are not permitted without the presence of this header. | [optional] |
 
 ### Return type
 
